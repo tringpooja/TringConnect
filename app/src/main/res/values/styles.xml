@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Profile.Name" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">9sp</item>
+        <item name="lineHeight">14dp</item>
+        <item name="android:textColor">@color/profileText</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+</resources>

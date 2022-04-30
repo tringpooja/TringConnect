@@ -2,11 +2,12 @@ package com.example.tringconnect
 
 import android.content.res.ColorStateList
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.ImageView
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.forEachIndexed
 import com.example.tringconnect.databinding.ActivityHomeBinding
 
@@ -37,16 +38,32 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.toolbar.setOnMenuItemClickListener {
-            Log.d("<<>>", "${it.iconTintList}")
+            when (it.itemId) {
+                R.id.search -> {
+                val menuColor =
+                    if (it.iconTintList == ColorStateList.valueOf(getColor(R.color.black)))
+                        ColorStateList.valueOf(getColor(R.color.lightGreen))
+                    else
+                        ColorStateList.valueOf(getColor(R.color.black))
+
+                it.iconTintList = menuColor
+                }
+            }
+
+            return@setOnMenuItemClickListener true
+        }
+    }
+
+    fun onClick(view: View) {
+        view.findViewById<ImageView>(R.id.badge).visibility = View.GONE
+        view.findViewById<ImageView>(R.id.notify).apply {
             val menuColor =
-                if (it.iconTintList == ColorStateList.valueOf(getColor(R.color.black)))
+                if (imageTintList == ColorStateList.valueOf(getColor(R.color.black)))
                     ColorStateList.valueOf(getColor(R.color.lightGreen))
                 else
                     ColorStateList.valueOf(getColor(R.color.black))
 
-            it.iconTintList = menuColor
-
-            return@setOnMenuItemClickListener true
+            imageTintList = menuColor
         }
     }
 }
